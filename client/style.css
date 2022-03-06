@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 /*Обнуление*/
 *{
@@ -37,34 +38,61 @@ img{vertical-align: top;}
 
 h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 /*--------------------*/
-
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: rgba(199, 188, 188, 0.123);
+    height: auto;
+}
 .wrapper{
-    margin: 10rem;
-    background-color: bisque;
-    height: 100rem;
+    margin: 0 10rem;
     width: 80%;
 }
-body{
-    margin: 0 auto;
-    padding: 2rem;
-    background-color: aquamarine;
-}
+
 
 #main-size{
-    width: 100%;
+    width: 90%;
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 10px;
 }
 
 #page-size{
+    font-size: 18px;
     display: block;
     width: 5%;
+    height: 30px;
     text-align: center;
+    border: solid 1px rgba(0, 0, 0, 0.102);
 }
+
 
 #rest-table{
     width: 80%;
     margin: 0 auto;
+    background-color: rgba(243, 235, 235, 0.472);
+    font-size: 20px;
+    border-spacing: 0;
+}
+
+#rest-table td{
+    text-align: center;
+    width: 10%;
+    border: solid 1px rgba(243, 239, 239, 0.835);
+
+}
+
+#rest-table tr{
+    text-align: center;
+   
+    height: 45px;
+    
+}
+
+#rest-table thead{
+    font-size: 22px;
+    background-color: rgb(17, 69, 138);
+    color: rgb(255, 255, 255);
+   
 }
 
 
