@@ -44,7 +44,7 @@ document.getElementById('page-size').addEventListener('change', ev => {
     getData(1, select.options[select.selectedIndex].value);
 })
 
-function createPagination(){
+function createPagination(totalPages, currentPage){
     let paginationArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     let paginationList = document.getElementById('pagination-list');
     let previous = document.createElement('li');
@@ -66,6 +66,7 @@ function createPagination(){
         reference.innerText = paginationArr[i];
         paginationItem.setAttribute('class', "page-item");
         reference.setAttribute('class', 'page-link');
+        paginationItem.setAttribute('class', 'paginationClick');
         paginationItem.appendChild(reference);
         paginationList.appendChild(paginationItem);
     }
@@ -84,5 +85,17 @@ function createPagination(){
 }
 
 createPagination();
+
+let pagItems = document.getElementsByClassName('paginationClick');
+for(let i = 0; i < pagItems.length; i++){
+    pagItems[i].addEventListener('click', ev => {
+        let select = document.getElementById('page-size');
+        select.options[select.selectedIndex].value;
+        getData(pagItems[i].innerText, select.options[select.selectedIndex].value);
+        
+    })
+}
+
+
 
 
