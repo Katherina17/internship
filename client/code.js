@@ -44,4 +44,45 @@ document.getElementById('page-size').addEventListener('change', ev => {
     getData(1, select.options[select.selectedIndex].value);
 })
 
+function createPagination(){
+    let paginationArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    let paginationList = document.getElementById('pagination-list');
+    let previous = document.createElement('li');
+    previous.setAttribute('class', "page-item");
+    let refPrevious = document.createElement('a');
+    refPrevious.setAttribute('class', 'page-link');
+    refPrevious.setAttribute('aria-label', "Previous");
+    previous.appendChild(refPrevious);
+    let span = document.createElement('span');
+    span.setAttribute('aria-hidden', 'true');
+    span.innerText = '«';
+    refPrevious.appendChild(span);
+    paginationList.appendChild(previous);
+    
+    
+    for (let i = 0; i < paginationArr.length; i++){
+        let paginationItem = document.createElement('li');
+        let reference = document.createElement('a');
+        reference.innerText = paginationArr[i];
+        paginationItem.setAttribute('class', "page-item");
+        reference.setAttribute('class', 'page-link');
+        paginationItem.appendChild(reference);
+        paginationList.appendChild(paginationItem);
+    }
+    
+    let next = document.createElement('li');
+    next.setAttribute('class', "page-item");
+    let refNext = document.createElement('a');
+    refNext.setAttribute('class', 'page-link');
+    refNext.setAttribute('aria-label', "Next");
+    next.appendChild(refNext);
+    let nextSpan = document.createElement('span');
+    nextSpan.setAttribute('aria-hidden', 'true');
+    nextSpan.innerText = '»';
+    refNext.appendChild(nextSpan);
+    paginationList.appendChild(next);
+}
+
+createPagination();
+
 
