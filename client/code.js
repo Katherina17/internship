@@ -98,4 +98,3 @@ for(let i = 0; i < pagItems.length; i++){
 
 
 
-
