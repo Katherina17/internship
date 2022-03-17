@@ -123,7 +123,10 @@ li{
     font-weight: 700;
 }
 
-
+.active-page{
+    background-color: rgb(17 69 138) !important;
+    color: rgb(255, 255, 255) !important;
+}
 
 
 

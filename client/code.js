@@ -21,6 +21,15 @@ function getData(pageNumber = 1, pageSize = 5){
         fillTable(data['data']);
         totalCount = Number(data["totalCount"]);
         createPagination();
+        let pagItems = document.getElementsByClassName('page-link');
+        for(let item of pagItems) {
+            if(item.innerText == String(currentPage)) {
+                item.setAttribute("class", "page-link active-page");
+            }
+            else {
+                item.setAttribute("class", "page-link");
+            }
+        }
     })
 }
 
@@ -188,7 +197,7 @@ function createPagination() {
     showPagination(paginationArr);
 }
 }
-       
+     
 
 document.getElementById('page-size').addEventListener('change', ev => {
     let select = document.getElementById('page-size');
