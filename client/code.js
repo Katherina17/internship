@@ -64,6 +64,18 @@ function showPagination(paginationArr){
     span.innerText = '«';
     refPrevious.appendChild(span);
     paginationList.appendChild(previous);
+
+    let arrowSingleBack = document.createElement('li');
+    arrowSingleBack.setAttribute('class', "page-item");
+    let refArrow = document.createElement('a');
+    refArrow.setAttribute('class', 'page-link');
+    refArrow.setAttribute('aria-label', "Previous");
+    arrowSingleBack.appendChild(refArrow);
+    let spanArrow = document.createElement('span');
+    spanArrow.setAttribute('aria-hidden', 'true');
+    spanArrow.innerText = '‹';
+    refArrow.appendChild(spanArrow);
+    paginationList.appendChild(arrowSingleBack);
     
     
     for (let i = 0; i < paginationArr.length; i++){
@@ -76,6 +88,18 @@ function showPagination(paginationArr){
         paginationItem.appendChild(reference);
         paginationList.appendChild(paginationItem);
     }
+
+    let arrowSingleNext = document.createElement('li');
+    arrowSingleNext.setAttribute('class', "page-item");
+    let refArrowNext = document.createElement('a');
+    refArrowNext.setAttribute('class', 'page-link');
+    refArrowNext.setAttribute('aria-label', "Previous");
+    arrowSingleNext.appendChild(refArrowNext);
+    let spanArrowNext = document.createElement('span');
+    spanArrowNext.setAttribute('aria-hidden', 'true');
+    spanArrowNext.innerText = '›';
+    refArrowNext.appendChild(spanArrowNext);
+    paginationList.appendChild(arrowSingleNext);
     
     let next = document.createElement('li');
     next.setAttribute('class', "page-item");
@@ -89,13 +113,24 @@ function showPagination(paginationArr){
     refNext.appendChild(nextSpan);
     paginationList.appendChild(next);
 
-    let pagItems = document.getElementsByClassName('paginationClick');
+    let pagItems = document.getElementsByClassName('page-link');
+    let select = document.getElementById('page-size');
+    let totalPages = paginationArr[paginationArr.length - 1];
     for(let i = 0; i < pagItems.length; i++){
         pagItems[i].addEventListener('click', ev => {
             if(pagItems[i].innerText !== '...'){
-                let select = document.getElementById('page-size');
-                currentPage = Number(pagItems[i].innerText);
-                getData(currentPage, select.options[select.selectedIndex].value);
+                if(pagItems[i].innerText == '›') {
+                    currentPage = currentPage == totalPages ? totalPages : currentPage + 1;
+                } else if(pagItems[i].innerText == '»') {
+                    currentPage = totalPages;
+                } else if(pagItems[i].innerText == '‹'){
+                    currentPage = currentPage == totalPages ? totalPages : currentPage - 1;
+                } else if(pagItems[i].innerText == '«'){
+                    currentPage = 1;
+                } else {
+                    currentPage = Number(pagItems[i].innerText);
+                }
+                getData(currentPage, pageSize);
             }
             
         })
