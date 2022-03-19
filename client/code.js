@@ -17,7 +17,6 @@ function getData(pageNumber = 1, pageSize = 5){
     fetch(`http://localhost:3000/restaurants?pageSize=${pageSize}&pageNumber=${pageNumber}`)
     .then(response => response.json())
     .then(data => {
-        console.log(data);
         fillTable(data['data']);
         totalCount = Number(data["totalCount"]);
         createPagination();
@@ -36,12 +35,15 @@ function getData(pageNumber = 1, pageSize = 5){
 
 
 function fillTable(data){
-    console.log(data);
     let table = document.getElementById("rest-table");
     let tbody = table.getElementsByTagName('tbody')[0];
     tbody.innerText = '';
     for (let i = 0; i < data.length; i++){
         let tr = document.createElement('tr');
+        let td = document.createElement('td');
+        td.innerText = "";
+        tr.appendChild(td);
+
         for(let key of ["address", "borough", 'cuisine', 'grades', 'name', 'restaurant_id']){
             let td = document.createElement('td');
             if (key == 'address'){
@@ -52,10 +54,11 @@ function fillTable(data){
                 }
             } else{
                 td.innerText = data[i][key];
-            }
+            } 
             tr.appendChild(td);
         }
         tbody.appendChild(tr);
+        
     }
 }
 
@@ -201,7 +204,6 @@ function createPagination() {
 
 document.getElementById('page-size').addEventListener('change', ev => {
     let select = document.getElementById('page-size');
-    currentPage = 1;
     pageSize = select.options[select.selectedIndex].value;
     getData(currentPage, pageSize);
 })
