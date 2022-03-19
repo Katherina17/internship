@@ -99,6 +99,14 @@ body{
    
 }
 
+#rest-table thead th:first-child{
+    width: 7%;
+}
+
+#rest-table thead th:last-child{
+    width: 7%;
+}
+
 #pagination{
     display: flex;
     justify-content: center;

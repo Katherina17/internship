@@ -57,8 +57,11 @@ function fillTable(data){
             } 
             tr.appendChild(td);
         }
+        let tdLast = document.createElement('td');
+        tdLast.innerText = " ";
+        tr.appendChild(tdLast);
         tbody.appendChild(tr);
-        
+
     }
 }
 
